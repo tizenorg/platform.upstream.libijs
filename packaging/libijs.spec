@@ -44,7 +44,6 @@ Source0:        %{name}-%{version}.tar.gz
  package provides the shared library.
 
 %package devel
-License:        MIT License
 Summary:        Include Files and Libraries Mandatory for Development
 Requires:       libijs
 Group:          Development/Libraries
