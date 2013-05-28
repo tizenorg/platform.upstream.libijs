@@ -18,14 +18,13 @@
 # norootforbuild
 
 Name:           libijs
-License:        MIT License
+License:        MIT
 Group:          System/Libraries
 Summary:        IJS raster image transport protocol library
 Version:        0.35
 Release:        11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.gz
-#BuildRequires:  docbook, docbook-utils 
 
 %description
  IJS raster image transport protocol: shared library
@@ -47,8 +46,8 @@ Source0:        %{name}-%{version}.tar.gz
 %package devel
 License:        MIT License
 Summary:        Include Files and Libraries Mandatory for Development
-Requires:       libijs eglibc-devel
-Group:          Development/Libraries/C and C++
+Requires:       libijs
+Group:          Development/Libraries
 
 %description devel
  IJS raster image transport protocol: development files
@@ -74,21 +73,12 @@ Group:          Development/Libraries/C and C++
 export CFLAGS="$RPM_OPT_FLAGS"    
 export CXXFLAGS="$RPM_OPT_FLAGS"    
 
-%configure\
-    --prefix=/usr\
-    --mandir=/usr/share/man --infodir=/usr/share/info \
-    --enable-shared
+%reconfigure --enable-shared
 
 make  %{?_smp_flags} CFLAGS="$CFLAGS"
-make doc
 
 %install
-%makeinstall
-mkdir -p %{buildroot}/usr/share/license
-cp %{_builddir}/%{buildsubdir}/debian/copyright %{buildroot}/usr/share/license/%{name}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%make_install
 
 %post -p /sbin/ldconfig
 
@@ -96,20 +86,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files 
 %manifest libijs.manifest
+%license debian/copyright
 %defattr(-,root,root)
-/usr/share/license/%{name}
 %{_libdir}/libijs-0.35.so
 
 %files devel
 %defattr(-,root,root)
-#%doc README
 %{_includedir}/ijs/*.h
 %{_libdir}/*.so
-%{_libdir}/*.la
-%{_libdir}/*.a
 %{_libdir}/pkgconfig/ijs.pc
 %{_bindir}/*
-#%{_docdir}/*
 %{_mandir}/man1/ijs-config.1.gz
 
 %changelog
