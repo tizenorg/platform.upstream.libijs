@@ -1,0 +1,8 @@
+Change-Id: I641f9ca6777f4618bc21336949473b194696d14c
+Code-Review+2: Anas Nashif
+Verified+1: Rusty Lynch <rusty.lynch@intel.com>
+Submitted-by: Anas Nashif
+Submitted-at: Tue, 04 Jun 2013 15:53:12 -0700
+Reviewed-on: https://review.tizen.org/gerrit/3688
+Project: platform/upstream/libijs
+Branch: refs/heads/tizen
