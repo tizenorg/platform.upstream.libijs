@@ -25,6 +25,7 @@ Version:        0.35
 Release:        11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.gz
+Source1001: 	libijs.manifest
 
 %description
  IJS raster image transport protocol: shared library
@@ -67,6 +68,7 @@ Group:          Development/Libraries
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"    
@@ -84,12 +86,13 @@ make  %{?_smp_flags} CFLAGS="$CFLAGS"
 %postun -p /sbin/ldconfig
 
 %files 
-%manifest libijs.manifest
+%manifest %{name}.manifest
 %license debian/copyright
 %defattr(-,root,root)
 %{_libdir}/libijs-0.35.so
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_includedir}/ijs/*.h
 %{_libdir}/*.so
