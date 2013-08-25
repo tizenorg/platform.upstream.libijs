@@ -1,3 +1,6 @@
+* Sun Aug 25 2013 Chengwei Yang <chengwei.yang@intel.com>
+- Remove debian packaging stuff
+
 * Mon May 27 2013 Anas Nashif <anas.nashif@intel.com> submit/tizen/20130517.051336@509317d
 - make it build on 64 bit system
 
