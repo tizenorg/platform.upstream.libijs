@@ -87,7 +87,7 @@ make  %{?_smp_flags} CFLAGS="$CFLAGS"
 
 %files 
 %manifest %{name}.manifest
-%license debian/copyright
+%license copyright
 %defattr(-,root,root)
 %{_libdir}/libijs-0.35.so
 
